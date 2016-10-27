@@ -1,0 +1,181 @@
+EXERCICE 1:
+
+QUESTION 2:
+$mkdir git-depot
+$git init
+Le repertoire .git/ a été créé
+
+QUESTION 3:
+
+$touch fichier.txt
+
+QUESTION 4:
+
+Sur la branche master
+
+Validation initiale
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+
+	fichier.txt
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont présents (utilisez "git add" pour les suivre)
+
+Cela signifie que le fichier ne fait pas parti de la branche principale, pour l'ajoputer il taper git add
+
+QUESTION 5:
+
+Sur la branche master
+
+Validation initiale
+
+Modifications qui seront validées :
+  (utilisez "git rm --cached <fichier>..." pour désindexer)
+
+	nouveau fichier: fichier.txt
+
+Le fichier a bien été ajouté à la branche master
+
+QUESTION 6:
+
+$ git commit -m "UnSuperMessage"
+[master (commit racine) a6d851f] UnSuperMessage
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 fichier.txt
+
+QUESTION 7:
+
+$ git status 
+Sur la branche master
+rien à valider, la copie de travail est propre
+
+fichier rouge: On a pas "add" le fichier dans la branche
+fichier vert: On a "add" le fichier mais pas "commit"
+Rien: Il n'y a plus de' fichier à "commit", la branche est à jour.
+
+QUESTION 8:
+
+$ git log -p
+commit a6d851f1a6e6be1f352904d4df4c484e1506f061
+Author: RomaricAmaury <amaury-gaultier@hotmail.fr>
+Date:   Thu Oct 27 09:28:59 2016 +0200
+
+    UnSuperMessage
+
+diff --git a/fichier.txt b/fichier.txt
+new file mode 100644
+index 0000000..e69de29
+
+La commande donne les logs de la branche.
+
+QUESTION 9:
+
+$ git diff
+diff --git a/fichier.txt b/fichier.txt // nom des 2 fichiers
+index e69de29..e965047 100644
+--- a/fichier.txt //ancienne version
++++ b/fichier.txt //nouvelle version
+@@ -0,0 +1 @@
++Hello //texte rajouté
+
+EXERCICE 2:
+
+Question 1:
+
+$ git branch test // crée une branche test
+$ git branch // permet de visualiser toutes les branches
+
+Question 3:
+
+$touch fichier2.txt
+$git add fichier2.txt
+$git commit -m "branch test2"
+[test 8957bee] branch test2
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 fichier2.txt
+
+Question 4:
+
+$ git log --graph --decorate --oneline --all
+* 8957bee (HEAD, test) branch test2
+* 2ef44a8 branch test
+* 5afb366 (master) test
+* a6d851f UnSuperMessage
+
+La commande renvoie tous les commit effectués et nous dit où on est.
+
+Question 5:
+
+$ git checkout master
+Basculement sur la branche 'master'
+$ git merge test
+Mise à jour 5afb366..8957bee
+Fast-forward
+ fichier.txt  | 4 +++-
+ fichier2.txt | 0
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 fichier2.txt
+$ git log --graph --decorate --oneline --all
+* 8957bee (HEAD, test, master) branch test2
+* 2ef44a8 branch test
+* 5afb366 test
+* a6d851f UnSuperMessage
+
+On a fusionné les branches test et master. Remarque le "HEAD" est à test et master en même temps!!
+
+Question 6:
+
+$ git merge test
+Fusion automatique de fichier.txt
+CONFLIT (contenu) : Conflit de fusion dans fichier.txt
+La fusion automatique a échoué ; réglez les conflits et validez le résultat.
+$ git log --graph --decorate --oneline --all
+* 66d402d (test) fichier.txt pas Hello
+| * c1247c4 (HEAD, master) fichier.txt
+|/  
+* 8957bee branch test2
+* 2ef44a8 branch test
+* 5afb366 test
+* a6d851f UnSuperMessage
+
+
+On obtient un conflit (erreur) au moment de la fusion car on a modifié la même ligne sur la branche test et master. git ne sait pas quelle version choisir.
+
+Question 7:
+
+On a modifier le fichier.txt de la branche test pour qu'il soit identique à celui de la branche principale, on aurait aussi pu supprimer celui de la branche principale. puis:
+
+$ git commit -am "fichier.txt"
+[master 82a979e] fichier.txt
+$ git merge test
+Already up-to-date.
+$ git log --graph --decorate --oneline --all
+*   82a979e (HEAD, master) fichier.txt
+|\  
+| * 66d402d (test) fichier.txt pas Hello
+* | c1247c4 fichier.txt
+|/  
+* 8957bee branch test2
+* 2ef44a8 branch test
+* 5afb366 test
+* a6d851f UnSuperMessage
+
+Question 8:
+
+$ git branch -d test
+Branche test supprimée (précédemment 66d402d).
+
+EXERCICE 3:
+
+git clone https://github.com/PolytechUPMC-IED/tp5-amaury123amaury.git
+Clonage dans 'tp5-amaury123amaury'...
+remote: Counting objects: 33, done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 33 (delta 3), reused 33 (delta 3), pack-reused 0
+Unpacking objects: 100% (33/33), done.
+Vérification de la connectivité... fait.
+
+
+
+

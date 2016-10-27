@@ -4,15 +4,17 @@ int main(void)
 {
   int i,size,sum;
   int **p;
-  
+
   printf("Entrez un nombre\n");
   scanf("%d",&size);
-  
+
   p = malloc(size * sizeof(int*));
   for(i = 0 ; i < size ; i++)
     p[i] =  malloc(size * sizeof(int));
 
   for( i = 0 ; i < size ; i++)
     free(p[i]);
-  return EXIT_SUCCESS;     
+
+    free(p);
+  return EXIT_SUCCESS;
 }
