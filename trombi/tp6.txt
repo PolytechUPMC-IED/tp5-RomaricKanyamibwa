@@ -1,0 +1,10 @@
+ Question 1 et 2:
+ script trombi.sh
+
+ Question 3:
+  avec la commande cut nous pouvons extraire tous les sous chaines demandé par chaque lignes
+  
+  Question 5:
+  script trombi.sh
+  
+  Question 6:
