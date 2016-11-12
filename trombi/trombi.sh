@@ -7,19 +7,13 @@ if  [ "$num_arg" -eq 0 ] && [ len -eq 0 ];
         echo "Vous n'avez pas mis un archive à decompresser "
     else
         archive="$1"
-        #echo $archive
         #Question 1
-        tar -xf $archive
+        tar -xzvf $archive
         #Question 2
         dir=`ls $PWD | grep ".jpg"`
-        #for i in $dir;
-        #do
-         #   echo $i
-        #done
-        #echo "size $len"
+
         #Question 5 
         list_spe=`ls $PWD | grep ".jpg"| cut -d "_" -f3`
-        #list_anne=`ls $PWD | grep ".jpg"| cut -d "_" -f4| cut -d "." -f1`
         nb=0
         touch filieres.txt
         for i in $list_spe;
@@ -31,11 +25,10 @@ if  [ "$num_arg" -eq 0 ] && [ len -eq 0 ];
             mkdir -vp $i$annee/ >> filieres.txt
             temp="_"
             convert -resize 90x120 $prenom$temp$nom$temp$i$temp$annee.jpg $i$annee/$nom.$prenom.jpg
-            #echo "$i$annee created!!"
+            
             #Question 7
             ligne=0 
             temp_dir=`ls  $i$annee/ | grep ".jpg" | sort`
-            #touch $i$annee/index.html
             echo "<html><head><meta charset="utf-8" /><title> Trombinoscope Spé $i</title></head>" > $i$annee/index.html
             echo "<body>" >> $i$annee/index.html
             echo "<h1 align=’center’>Trombinoscope Spé $i</h1>" >> $i$annee/index.html
